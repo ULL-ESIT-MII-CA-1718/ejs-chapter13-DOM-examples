@@ -1,6 +1,7 @@
 var cat = document.querySelector("#cat");
 var hat = document.querySelector("#hat");
 var angle = 0, lastTime = null;
+
 function animate(time) {
   if (lastTime != null)
     angle += (time - lastTime) * 0.001;
