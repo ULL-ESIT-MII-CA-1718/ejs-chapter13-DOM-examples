@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body id="b">
+	<p>One</p>
+	<p>Two</p>
+	<p>Three</p>
+  <p id="cuatro">Cuatro</p>
+	<button onclick="myFunction()">Click to replace "cuatro" by "<b>four</b>"</button>
+
+	<script>
+		var paragraphs = document.body.getElementsByTagName("p");
+		document.body.insertBefore(paragraphs[2], paragraphs[0]);
+
+		function myFunction() {
+			var body = document.getElementById("b");
+			var p4 = document.createElement('p');
+			p4.innerHTML = "<b>four</b>";
+			var item = document.getElementById("cuatro");
+			body.replaceChild(p4, item);
+		}
+	</script> 
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <title>My home page</title>
+  </head>
+  <body>
+    <h1>My home page</h1>
+    <p>Hello, I am Marijn and this is my home page.</p>
+    <p>I also wrote a book! Read it
+      <a href="http://eloquentjavascript.net">here</a>.</p>
+
+		<p class="trivial">My ostrich Gertrude:</p>
+		<p class="trivial"><img id="gertrude" src="../imgs/ostrich.jpg"></p>
+
+		<script>
+			var ostrich = document.getElementById("gertrude");
+			console.log(ostrich.src);
+      var data = Array.from(document.getElementsByClassName("trivial"));
+      data.forEach((i,j) => console.log("trivial["+j+"] = "+i.innerHTML));
+		</script>
+
+    <!-- Chrome 61 now supports JavaScript modules natively, unifying the way modular JavaScript can be written -->
+    <script type="module">
+      import {talksAbout} from "./talks-about.js";
+			console.log(talksAbout(document.body, "book")); 
+
+      var link = document.body.getElementsByTagName("a")[0];
+      console.log(link.href);
+    </script>
+  </body>
+</html>
