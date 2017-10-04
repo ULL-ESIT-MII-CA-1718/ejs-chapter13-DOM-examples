@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<style>
+	#explanation {
+			display: none;
+			background-color: lightblue;
+	}
+</style>
+<body>
+	 <p>The <img src="../imgs/cat.png" alt="Cat"> in the
+		<img src="../imgs/hat.png" alt="Hat">.</p>
+
+	<p><button onclick="replaceImages()">Replace Images</button></p>
+	<p><button onclick="replaceImagesUp(); showExplanation();">Dos not replace correctly</button></p>
+
+  <div id="explanation">If we started from the front, removing the
+  first image would cause the list to lose its first element so
+  that the second time the loop repeats, where <tt>i</tt> is 1, it would
+  stop because the length of the collection is now also 1</div>
+	<script>
+		function replaceImages() {
+			var images = document.body.getElementsByTagName("img");
+			for (var i = images.length - 1; i >= 0; i--) {
+				var image = images[i];
+				if (image.alt) {
+					var text = document.createTextNode(image.alt);
+					image.parentNode.replaceChild(text, image);
+				}
+			}
+		}
+	</script> 
+
+	<script>
+		function replaceImagesUp() {
+			var images = document.body.getElementsByTagName("img");
+			for (var i = 0; i < images.length; i++) {
+				var image = images[i];
+				if (image.alt) {
+					var text = document.createTextNode(image.alt);
+					image.parentNode.replaceChild(text, image);
+				}
+			}
+		}
+	</script> 
+
+  <script>
+     function showExplanation() {
+        var explanation =  document.getElementById("explanation");
+        var p4 = document.createElement('p');
+        p4.innerHTML = "<pre>"+document.scripts[1].innerText+"</pre>";
+        explanation.appendChild(p4);
+        explanation.style.display = "block";
+     }
+  </script>
+</body>
+</html>
