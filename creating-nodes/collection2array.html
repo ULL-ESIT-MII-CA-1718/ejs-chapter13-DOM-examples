@@ -1,0 +1,27 @@
+  <!DOCTYPE HTML>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="output"></div>
+    <div id="output2"></div>
+    <script type="text/javascript">
+        var arrayish = {0: "one", 1: "two", length: 2};
+        var real = Array.prototype.slice.call(arrayish, 0);
+        real.forEach(function(elt) { 
+          output.innerHTML = elt;
+          console.log(elt); 
+        });
+        // → one
+        //   two
+        var ar = Array.from(arrayish);
+        ar.forEach(function(elt) { 
+          output2.innerHTML = elt;
+          console.log(elt); });
+        // → one
+        //   two
+    </script>
+  </body>
+  </html>
