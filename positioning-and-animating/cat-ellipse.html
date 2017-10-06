@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body background="http://pngimg.com/uploads/cat/cat_PNG106.png">
+	<p style="text-align: center">
+	<img src="../imgs/cat.png" style="position: relative">
+	</p>
+	<script>
+		var cat = document.querySelector("img");
+		var angle = 0, lastTime = null;
+var radius = 200;
+		function animate(time) {
+			if (lastTime != null)
+				angle += (time - lastTime) * 0.001;
+			lastTime = time;
+			cat.style.top = (180+Math.sin(angle) * 200) + "px";
+			cat.style.left = (Math.cos(angle) * radius) + "px";
+			requestAnimationFrame(animate);
+      radius += 0.1;
+		}
+		requestAnimationFrame(animate);
+	</script>  
+</body>
+</html>
