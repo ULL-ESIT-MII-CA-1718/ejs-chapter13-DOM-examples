@@ -1,0 +1,44 @@
+body{margin:0;}
+*{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; 
+  /* Specify that <div> elements should have padding and border
+     included in the element's total width and height 
+     Should they include the border-box? Or just the content-box
+     (which is the default value of the width and height properties)?
+   */
+  margin-left: 2cm;
+}
+
+/*
+ * The position property specifies the type of positioning method
+ used for an element (static, relative, fixed or absolute)
+ */
+
+.relative{
+  width: 400px;
+  height: 400px;
+  /*
+   * An element with position: relative; is positioned relative to its normal position.
+   * */
+  position: relative;
+  background-color:green;
+}
+.absolute{
+  /* 
+   * An element with position: absolute; is positioned relative to the nearest positioned ancestor 
+   * */
+  position: absolute;
+  top:40px;
+  left: 20px;
+  background-color: red;
+  padding: 30px;
+  overflow:hidden;
+}
+.inner{
+  margin: 20px;
+  padding: 10px;
+  border: 5px solid gray;
+  background-color: yellow;
+}
