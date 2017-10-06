@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style type="text/css">
+    .explanation
+    {
+        float: left;
+    }
+  </style>
+</head>
+<body>
+  <p style="border: 3px solid red">
+   I'm <b>boxed</b> in
+  </p>
+  <div class="explanation">
+  <img src="https://mdn.mozillademos.org/files/346/Dimensions-client.png" />
+  <img src="https://mdn.mozillademos.org/files/347/Dimensions-offset.png" />
+  </div>
+
+<script>
+  var para = document.body.getElementsByTagName("p")[0];
+  console.log("clientHeight:", para.clientHeight);
+  console.log("clientWidth:", para.clientWidth);
+  console.log("offsetHeight:", para.offsetHeight);
+  console.log("offsetWidth:", para.offsetWidth);
+</script> 
+</body>
+</html>
