@@ -1,0 +1,72 @@
+//////////////////////////////////////////////////////////
+// Elements by tag name
+function byTagName(node, tagName) {
+    var result = [];
+    var recurse = function(node, tagName) {
+        if (node.nodeType == document.TEXT_NODE || node.tagName == undefined) {
+            return
+        if (node.tagName.toUpperCase() == tagName.toUpperCase()) {
+            result.push(node);
+        }
+        if (node.childNodes) {
+            for (var i=0; i<node.childNodes.length; ++i) {
+                recurse(node.childNodes[i], tagName);
+            }
+        }
+    };
+    recurse(node, tagName);
+    return result;
+};
+///////////////////////////////////////////////////
+// The Cat's Hat - 1
+var cat = document.querySelector("#cat");
+var hat = document.querySelector("#hat");
+
+var angle = 0, lastTime = null;
+var center = {x: 200, y:10};
+var startAngle = Math.PI;
+function animate(time) {
+if (lastTime != null)
+  angle += (time - lastTime) * 0.001;
+lastTime = time;
+cat.style.top = (Math.sin(angle) * 20 + center.y) + "px";
+cat.style.left = (Math.cos(angle) * 200 + center.x) + "px";
+hat.style.top = (Math.sin(startAngle+angle) * 20 + center.y) + "px";
+hat.style.left = (Math.cos(startAngle+angle) * 200 + center.x) + "px";
+requestAnimationFrame(animate);
+}
+requestAnimationFrame(animate);
+///////////////////////////////////////////////////
+// The Cat's Hat - 2
+// .hat will have absolute positions which are measured from top left corner of
+// closest enclosing element whose position is not 'static'
+<div class="cat" style="position: absolute">
+  <img src="img/cat.png" id="cat">
+    <div class="hat" style="position: absolute">
+      <img src="img/hat.png" id="hat">
+    </div>
+</div>
+<script>
+    var hatDiv = document.querySelector(".hat");
+    var catDiv = document.querySelector(".cat");
+
+    var angle = 0, lastTime = null;
+    var center = {x: 200, y:10};
+    function animate(time) {
+        if (lastTime != null)
+            angle += (time - lastTime) * 0.001;
+        lastTime = time;
+        var catCoords = {x: Math.cos(angle) * 200 + center.x,
+                         y: Math.sin(angle) * 20 + center.y};
+       
+        catDiv.style.top = (catCoords.y) + "px";
+        catDiv.style.left = (catCoords.x) + "px";
+        // The following two coordinates will be relative to cat
+        // because of the div setup above
+        hatDiv.style.top = Math.sin(angle)*55 + "px";
+        hatDiv.style.left = Math.cos(angle)*55 + "px";
+        requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+</script>
+
