@@ -1,5 +1,3 @@
-<!-- https://github.com/ULL-ESIT-MII-CA-1718/javascript-practice -->
-<!-- https://github.com/ULL-ESIT-MII-CA-1718/javascript-practice/blob/master/eloquent-javascript/13.2.%20Elements%20by%20tag%20name.html -->
 <!-- 13.2. Elements by tag name
 
 The getElementsByTagName method returns all child elements with a given tag name. 
@@ -20,24 +18,24 @@ call the inner function once from the outer function. -->
 <p>A paragraph with <span>one</span>, <span>two</span> spans.</p>
 
 <script>
+  <!-- Eloquent JavaScript answer: -->
   function byTagName(node, tagName) {
-    tagName = tagName.toUpperCase();
-    var hasTagName = [];
+      var found = [];
+      tagName = tagName.toUpperCase();
 
-    checkChildNode(node.firstChild); // check node's first child
-    return hasTagName; 
-    
-    function checkChildNode(node) { 
-      while (node) { // while node exists
-        if (node.nodeType == 1 && node.tagName) { // if node is an element
-          if (node.tagName === tagName) { // if node's tag name matches given tagName
-            hasTagName.push(node); // add node to hasTagName array
+      function explore(node) {
+        for (var i = 0; i < node.childNodes.length; i++) {
+          var child = node.childNodes[i];
+          if (child.nodeType == document.ELEMENT_NODE) {
+            if (child.nodeName == tagName)
+              found.push(child);
+            explore(child);
           }
-          checkChildNode(node.firstChild); // check node's first child recursively
         }
-        node = node.nextSibling; // reassign node to its next sibling
       }
-    } 
+
+      explore(node);
+      return found;
   }
   
   console.log(byTagName(document.body, "h1").length); // prints 1
@@ -45,3 +43,4 @@ call the inner function once from the outer function. -->
   var para = document.querySelector("p");
   console.log(byTagName(para, "span").length); // prints 2
 </script>
+
